@@ -1,17 +1,17 @@
+import { useContext } from 'react';
+import WallpaperContext from '../../context/WallpaperContext';
 import { Wallpaper } from '../../types';
 import styles from './wallpapers.module.css';
 
-type WallpapersProps = {
-  data: Wallpaper[];
-  removeWallpaper: (id: number) => void;
-};
+function Wallpapers() {
+  const { wallpapers, removeWallpaper } = useContext(WallpaperContext);
+  const data = wallpapers;
 
-function Wallpapers({ data, removeWallpaper }: WallpapersProps) {
   return (
     <>
       <h1>Wallpapers</h1>
       <div className={styles.wallpapersListContainer}>
-        {data.map((wallpaper) => (
+        {data.map((wallpaper: Wallpaper) => (
           <div className={styles.cardContainer} key={wallpaper.id}>
             <div className={styles.cardTitle}>
               <p className={styles.cardTitle}>{wallpaper.title}</p>
